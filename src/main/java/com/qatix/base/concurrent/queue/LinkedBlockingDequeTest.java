@@ -28,6 +28,7 @@ public class LinkedBlockingDequeTest {
 //
         /**
          * 调用的是takeFirst()
+         * take() 就是takeFirst()
          * h-2
          h-1
          t-1

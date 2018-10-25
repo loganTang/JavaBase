@@ -6,16 +6,16 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class LinkedBlockingQueueTest {
 
     public static void main(String[] args) throws InterruptedException {
-        BlockingQueue<String> queue = new LinkedBlockingQueue<String>(1024);//有界队列
+        BlockingQueue<String> queue = new LinkedBlockingQueue<>(1024);//有界队列
         queue.put("ele1");
         queue.put("ele2");
         System.out.println(queue.take());
         System.out.println(queue.take());
 
-        BlockingQueue<String> queue2 = new LinkedBlockingQueue<String>(2);
+        BlockingQueue<String> queue2 = new LinkedBlockingQueue<>(2);
         queue2.put("ele1");
         queue2.put("ele2");
-        queue2.add("ele3");
+        queue2.add("ele3"); //Exception in thread "main" java.lang.IllegalStateException: Queue full
 //        queue2.put("ele3");
         System.out.println(queue2.take());
         System.out.println(queue2.take());

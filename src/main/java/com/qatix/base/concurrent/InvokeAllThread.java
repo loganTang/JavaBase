@@ -31,6 +31,7 @@ public class InvokeAllThread {
             this.num = num;
         }
 
+        @Override
         public BigDecimal call() throws Exception {
             Random r = new Random();
             long time = (r.nextInt(10) + 1) * 100;

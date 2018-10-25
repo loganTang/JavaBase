@@ -7,7 +7,8 @@ public class ArrayBlockingQueueTest {
 
     public static void main(String[] args) {
 
-        BlockingQueue queue = new ArrayBlockingQueue(1000);
+        BlockingQueue queue = new ArrayBlockingQueue(2);
+
         Producer producer = new Producer(queue);
         Consumer consumer = new Consumer(queue);
 
@@ -24,14 +25,18 @@ class Producer implements Runnable{
         this.queue = queue;
     }
 
+    @Override
     public void run() {
         System.out.println("producer run");
         try {
             queue.put("1");
+            System.out.println("put e1");
             Thread.sleep(1000);
             queue.put("2");
+            System.out.println("put e2");
             Thread.sleep(1000);
-            queue.put("33");
+            queue.put("3");
+            System.out.println("put e3");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -45,12 +50,16 @@ class Consumer implements Runnable{
         this.queue = queue;
     }
 
+    @Override
     public void run() {
         System.out.println("consumer run");
         try {
+            Thread.sleep(4000);
             System.out.println(queue.take());
-            System.out.println(queue.size());
+            System.out.println("size:"+queue.size());
+            Thread.sleep(4000);
             System.out.println(queue.take());
+            Thread.sleep(4000);
             System.out.println(queue.take());
         } catch (InterruptedException e) {
             e.printStackTrace();
